@@ -14,6 +14,7 @@ Plugins for Large Language Model (LLM).
 - Uninstall a plugin: `op install <plugin_name>`
 - Start a plugin: `op run <plugin_name>`
 
+
 ## Citing OpenPlugin
 
 If our work has been helpful to you, please feel free to cite us:
@@ -26,3 +27,7 @@ If our work has been helpful to you, please feel free to cite us:
     year={2023},
 }
 ```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=OpenRL-Lab/OpenPlugin&type=Date)](https://star-history.com/#OpenRL-Lab/OpenPlugin&Date)
