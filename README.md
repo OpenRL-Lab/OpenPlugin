@@ -19,7 +19,7 @@ Plugins for Large Language Model (LLM).
 If our work has been helpful to you, please feel free to cite us:
 ```latex
 @misc{openplugin2023,
-    title={OpenRL},
+    title={OpenPlugin},
     author={OpenRL Contributors},
     publisher = {GitHub},
     howpublished = {\url{https://github.com/OpenRL-Lab/openplugin}},
