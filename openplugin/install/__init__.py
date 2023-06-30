@@ -15,10 +15,19 @@
 # limitations under the License.
 
 """"""
+import io
 import shutil
+import zipfile
 
-import requests, zipfile, io
-from openplugin.utils.util import get_plugin_list, get_plugin_directory,get_zip_file_url
+import requests
+
+from openplugin.utils.util import (
+    get_plugin_directory,
+    get_plugin_list,
+    get_zip_file_url,
+)
+
+
 # import urllib
 def install_plugin(plugin_name: str) -> bool:
     plugin_list = get_plugin_list()
@@ -35,7 +44,7 @@ def install_plugin(plugin_name: str) -> bool:
         plugin_directory = get_plugin_directory()
         if not plugin_directory.exists():
             plugin_directory.mkdir(parents=True)
-        print("Extracting plugin to {}".format(plugin_directory/plugin_name))
+        print("Extracting plugin to {}".format(plugin_directory / plugin_name))
         z.extractall(get_plugin_directory())
     except:
         raise ValueError("plugin {} not found".format(plugin_name))

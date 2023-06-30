@@ -56,6 +56,7 @@ def print_system_info(
 
 CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
+
 @click.group(invoke_without_command=True)
 @click.option(
     "--version",
@@ -83,21 +84,23 @@ def cli(ctx):
 
 
 @cli.command()
-@click.argument('plugin_name')
+@click.argument("plugin_name")
 def install(plugin_name):
     from openplugin.install import install_plugin
+
     install_plugin(plugin_name)
 
 
-
 @cli.command()
-@click.argument('plugin_name')
+@click.argument("plugin_name")
 def uninstall(plugin_name):
     from openplugin.install import uninstall_plugin
+
     uninstall_plugin(plugin_name)
 
+
 @cli.command()
-@click.argument('plugin_name')
+@click.argument("plugin_name")
 @click.option(
     "--host",
     type=str,
@@ -105,12 +108,13 @@ def uninstall(plugin_name):
     help="Host to run the plugin.",
 )
 @click.option(
-    "-p","--port",
+    "-p",
+    "--port",
     type=int,
     default=5003,
     help="Port to run the plugin.",
 )
-def run(plugin_name,host,port):
+def run(plugin_name, host, port):
     from openplugin.run import run_plugin
-    run_plugin(plugin_name,host=host,port=port)
 
+    run_plugin(plugin_name, host=host, port=port)

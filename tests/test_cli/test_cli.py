@@ -15,8 +15,8 @@
 # limitations under the License.
 
 """"""
-import subprocess
 import os
+import subprocess
 import sys
 
 import pytest
@@ -30,11 +30,11 @@ def test_version():
     out = subprocess.check_output("op --version".split())
     assert "OPENPLUGIN version" in out.decode("utf-8")
 
+
 @pytest.mark.unittest
 def test_system_info():
     out = subprocess.check_output("op --system_info".split())
     assert "OpenPlugin" in out.decode("utf-8")
-
 
 
 if __name__ == "__main__":

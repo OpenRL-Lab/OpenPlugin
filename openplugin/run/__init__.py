@@ -17,23 +17,24 @@
 """"""
 import os
 import sys
+import urllib.request
+from pathlib import Path
 
 import ifaddr
-from pathlib import Path
+
 from openplugin.utils.app_util import import_app
 from openplugin.utils.util import get_plugin_list
 
-import urllib.request
-
 IP_WEBSITES = (
-           'https://ipinfo.io/ip',
-           'https://ipecho.net/plain',
-           'https://api.ipify.org',
-           'https://ipaddr.site',
-           'https://icanhazip.com',
-           'https://ident.me',
-           'https://curlmyip.net',
-           )
+    "https://ipinfo.io/ip",
+    "https://ipecho.net/plain",
+    "https://api.ipify.org",
+    "https://ipaddr.site",
+    "https://icanhazip.com",
+    "https://ident.me",
+    "https://curlmyip.net",
+)
+
 
 def getIp():
     for ipWebsite in IP_WEBSITES:
@@ -42,7 +43,7 @@ def getIp():
 
             charsets = response.info().get_charsets()
             if len(charsets) == 0 or charsets[0] is None:
-                charset = 'utf-8'  # Use utf-8 by default
+                charset = "utf-8"  # Use utf-8 by default
             else:
                 charset = charsets[0]
 
@@ -56,31 +57,32 @@ def getIp():
     # (unlikely) or you are disconnected from the internet.
     return None
 
-local_addresses = [
-    "0.0.0.0",
-    "127.0.0.1"
-]
 
-def display_host_info(ip,host):
+local_addresses = ["0.0.0.0", "127.0.0.1"]
+
+
+def display_host_info(ip, host):
     print(f"Launched at {ip}:{host}")
     print(f"\tYou can get json file at {ip}:{host}/ai-plugin.json")
     print(f"\tYou can get YAML file at {ip}:{host}/openapi.yaml")
-def run_plugin(plugin_name, host:str, port:int):
+
+
+def run_plugin(plugin_name, host: str, port: int):
     plugin_list = get_plugin_list()
     if plugin_name not in plugin_list:
         print(f"Plugin {plugin_name} not installed!")
         return
 
     plugin_path = f"{str(Path.home())}/.openplugin/plugins/{plugin_name}"
-    os.chdir(plugin_path )
-    sys.path.append('./')
+    os.chdir(plugin_path)
+    sys.path.append("./")
     try:
         print("Loading plugin from {}".format(plugin_path))
         app = import_app("main:app")
     except:
         raise ValueError("plugin {} not found".format(plugin_name))
 
-    print("Running plugin: {} on {}:{}".format(plugin_name,host,port))
+    print("Running plugin: {} on {}:{}".format(plugin_name, host, port))
 
     ips = set()
     outip = getIp()
@@ -93,14 +95,17 @@ def run_plugin(plugin_name, host:str, port:int):
         for ip in adapter.ips:
             # print("   %s/%s" % (ip.ip, ip.network_prefix))
             ip_address = ip.ip
-            if isinstance(ip_address,str) \
-                    and "(" not in ip_address \
-                    and ":" not in ip_address \
-                    and ip_address not in local_addresses and not ip_address.startswith("192.168"):
+            if (
+                isinstance(ip_address, str)
+                and "(" not in ip_address
+                and ":" not in ip_address
+                and ip_address not in local_addresses
+                and not ip_address.startswith("192.168")
+            ):
                 ips.add(ip_address)
 
-    if len(ips)>0:
+    if len(ips) > 0:
         for ip in ips:
-            display_host_info(ip,port)
+            display_host_info(ip, port)
 
     app.run(debug=True, host=host, port=port)

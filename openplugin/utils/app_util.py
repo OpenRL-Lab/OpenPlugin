@@ -27,10 +27,11 @@ try:
 except ImportError:
     import importlib_metadata
 
-from openplugin.utils.errors import AppImportError
 import urllib.parse
 
-REDIRECT_TO = getattr(os, 'devnull', '/dev/null')
+from openplugin.utils.errors import AppImportError
+
+REDIRECT_TO = getattr(os, "devnull", "/dev/null")
 
 # Server and Date aren't technically hop-by-hop
 # headers, but they are in the purview of the
@@ -40,26 +41,29 @@ REDIRECT_TO = getattr(os, 'devnull', '/dev/null')
 # In the future, concatenation server header values
 # might be better, but nothing else does it and
 # dropping them is easier.
-hop_headers = set("""
+hop_headers = set(
+    """
     connection keep-alive proxy-authenticate proxy-authorization
     te trailers transfer-encoding upgrade
     server date
-    """.split())
+    """.split()
+)
 
 try:
     from setproctitle import setproctitle
 
     def _setproctitle(title):
         setproctitle("gunicorn: %s" % title)
+
 except ImportError:
+
     def _setproctitle(title):
         pass
 
 
 def load_entry_point(distribution, group, name):
     dist_obj = importlib_metadata.distribution(distribution)
-    eps = [ep for ep in dist_obj.entry_points
-           if ep.group == group and ep.name == name]
+    eps = [ep for ep in dist_obj.entry_points if ep.group == group and ep.name == name]
     if not eps:
         raise ImportError("Entry point %r not found" % ((group, name),))
     return eps[0].load()
@@ -69,6 +73,7 @@ positionals = (
     inspect.Parameter.POSITIONAL_ONLY,
     inspect.Parameter.POSITIONAL_OR_KEYWORD,
 )
+
 
 def import_app(module):
     parts = module.split(":", 1)
@@ -152,6 +157,7 @@ def import_app(module):
         raise AppImportError("Application object must be callable.")
     return app
 
+
 def get_arity(f):
     sig = inspect.signature(f)
     arity = 0
@@ -164,12 +170,12 @@ def get_arity(f):
 
 
 def get_username(uid):
-    """ get the username for a user id"""
+    """get the username for a user id"""
     return pwd.getpwuid(uid).pw_name
 
 
 def set_owner_process(uid, gid, initgroups=False):
-    """ set user and group of workers processes """
+    """set user and group of workers processes"""
 
     if gid:
         if uid:
@@ -196,6 +202,7 @@ def chown(path, uid, gid):
 
 
 if sys.platform.startswith("win"):
+
     def _waitfor(func, pathname, waitall=False):
         # Perform the operation
         func(pathname)
@@ -204,7 +211,7 @@ if sys.platform.startswith("win"):
             dirname = pathname
         else:
             dirname, name = os.path.split(pathname)
-            dirname = dirname or '.'
+            dirname = dirname or "."
         # Check for `pathname` to be removed from the filesystem.
         # The exponential backoff of the timeout amounts to a total
         # of ~1 second after which the deletion is probably an error
@@ -226,11 +233,15 @@ if sys.platform.startswith("win"):
             # Increase the timeout and try again
             time.sleep(timeout)
             timeout *= 2
-        warnings.warn('tests may fail, delete still pending for ' + pathname,
-                      RuntimeWarning, stacklevel=4)
+        warnings.warn(
+            "tests may fail, delete still pending for " + pathname,
+            RuntimeWarning,
+            stacklevel=4,
+        )
 
     def _unlink(filename):
         _waitfor(os.unlink, filename)
+
 else:
     _unlink = os.unlink
 
@@ -254,9 +265,9 @@ def is_ipv6(addr):
     return True
 
 
-def parse_address(netloc, default_port='8000'):
-    if re.match(r'unix:(//)?', netloc):
-        return re.split(r'unix:(//)?', netloc)[-1]
+def parse_address(netloc, default_port="8000"):
+    if re.match(r"unix:(//)?", netloc):
+        return re.split(r"unix:(//)?", netloc)[-1]
 
     if netloc.startswith("fd://"):
         fd = netloc[5:]
@@ -269,11 +280,11 @@ def parse_address(netloc, default_port='8000'):
         netloc = netloc.split("tcp://")[1]
     host, port = netloc, default_port
 
-    if '[' in netloc and ']' in netloc:
-        host = netloc.split(']')[0][1:]
-        port = (netloc.split(']:') + [default_port])[1]
-    elif ':' in netloc:
-        host, port = (netloc.split(':') + [default_port])[:2]
+    if "[" in netloc and "]" in netloc:
+        host = netloc.split("]")[0][1:]
+        port = (netloc.split("]:") + [default_port])[1]
+    elif ":" in netloc:
+        host, port = (netloc.split(":") + [default_port])[:2]
     elif netloc == "":
         host, port = "0.0.0.0", default_port
 
@@ -306,6 +317,7 @@ def close(sock):
 try:
     from os import closerange
 except ImportError:
+
     def closerange(fd_low, fd_high):
         # Iterate through and close all file descriptors.
         for fd in range(fd_low, fd_high):
@@ -317,9 +329,9 @@ except ImportError:
 
 def write_chunk(sock, data):
     if isinstance(data, str):
-        data = data.encode('utf-8')
+        data = data.encode("utf-8")
     chunk_size = "%X\r\n" % len(data)
-    chunk = b"".join([chunk_size.encode('utf-8'), data, b"\r\n"])
+    chunk = b"".join([chunk_size.encode("utf-8"), data, b"\r\n"])
     sock.sendall(chunk)
 
 
@@ -342,7 +354,9 @@ def write_nonblock(sock, data, chunked=False):
 
 
 def write_error(sock, status_int, reason, mesg):
-    html_error = textwrap.dedent("""\
+    html_error = (
+        textwrap.dedent(
+            """\
     <html>
       <head>
         <title>%(reason)s</title>
@@ -352,16 +366,24 @@ def write_error(sock, status_int, reason, mesg):
         %(mesg)s
       </body>
     </html>
-    """) % {"reason": reason, "mesg": html.escape(mesg)}
+    """
+        )
+        % {"reason": reason, "mesg": html.escape(mesg)}
+    )
 
-    http = textwrap.dedent("""\
+    http = (
+        textwrap.dedent(
+            """\
     HTTP/1.1 %s %s\r
     Connection: close\r
     Content-Type: text/html\r
     Content-Length: %d\r
     \r
-    %s""") % (str(status_int), reason, len(html_error), html_error)
-    write_nonblock(sock, http.encode('latin1'))
+    %s"""
+        )
+        % (str(status_int), reason, len(html_error), html_error)
+    )
+    write_nonblock(sock, http.encode("latin1"))
 
 
 def _called_with_wrong_args(f):
@@ -390,16 +412,13 @@ def _called_with_wrong_args(f):
         del tb
 
 
-
-
-
 def getcwd():
     # get current path, try to use PWD env first
     try:
-        a = os.stat(os.environ['PWD'])
+        a = os.stat(os.environ["PWD"])
         b = os.stat(os.getcwd())
         if a.st_ino == b.st_ino and a.st_dev == b.st_dev:
-            cwd = os.environ['PWD']
+            cwd = os.environ["PWD"]
         else:
             cwd = os.getcwd()
     except Exception:
@@ -424,7 +443,7 @@ def daemonize(enable_stdio_inheritance=False):
     Standard daemonization of a process.
     http://www.faqs.org/faqs/unix-faq/programmer/faq/ section 1.7
     """
-    if 'GUNICORN_FD' not in os.environ:
+    if "GUNICORN_FD" not in os.environ:
         if os.fork():
             os._exit(0)
         os.setsid()
@@ -509,12 +528,12 @@ def seed():
     try:
         random.seed(os.urandom(64))
     except NotImplementedError:
-        random.seed('%s.%s' % (time.time(), os.getpid()))
+        random.seed("%s.%s" % (time.time(), os.getpid()))
 
 
 def check_is_writable(path):
     try:
-        with open(path, 'a') as f:
+        with open(path, "a") as f:
             f.close()
     except IOError as e:
         raise RuntimeError("Error: '%s' isn't writable [%r]" % (path, e))
@@ -525,7 +544,7 @@ def to_bytestring(value, encoding="utf8"):
     if isinstance(value, bytes):
         return value
     if not isinstance(value, str):
-        raise TypeError('%r is not a string' % value)
+        raise TypeError("%r is not a string" % value)
 
     return value.encode(encoding)
 
@@ -560,10 +579,10 @@ def make_fail_app(msg):
     msg = to_bytestring(msg)
 
     def app(environ, start_response):
-        start_response("500 Internal Server Error", [
-            ("Content-Type", "text/plain"),
-            ("Content-Length", str(len(msg)))
-        ])
+        start_response(
+            "500 Internal Server Error",
+            [("Content-Type", "text/plain"), ("Content-Length", str(len(msg)))],
+        )
         return [msg]
 
     return app
@@ -597,8 +616,8 @@ def reraise(tp, value, tb=None):
 def bytes_to_str(b):
     if isinstance(b, str):
         return b
-    return str(b, 'latin1')
+    return str(b, "latin1")
 
 
 def unquote_to_wsgi_str(string):
-    return urllib.parse.unquote_to_bytes(string).decode('latin-1')
+    return urllib.parse.unquote_to_bytes(string).decode("latin-1")

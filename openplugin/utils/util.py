@@ -18,17 +18,21 @@
 
 import platform
 import re
+from pathlib import Path
 from typing import Dict
 
-from pathlib import Path
 import numpy as np
 
 import openplugin
 
+
 def get_zip_file_url(plugin_name: str) -> str:
     return "https://openrl.net/openplugin/download/{}".format(plugin_name)
+
+
 def get_plugin_directory() -> Path:
     return Path.home() / ".openplugin" / "plugins"
+
 
 def get_plugin_list():
     plugin_list = []
@@ -38,6 +42,7 @@ def get_plugin_list():
             if plugin.is_dir():
                 plugin_list.append(plugin.name)
     return plugin_list
+
 
 def get_system_info() -> Dict[str, str]:
     """
