@@ -23,7 +23,7 @@ async def plugin_logo():
 @app.get("/ai-plugin.json")
 async def plugin_manifest():
     host = request.headers['Host']
-    with open("./.well-known/ai-plugin.json") as f:
+    with open("ai-plugin.json") as f:
         text = f.read()
         return quart.Response(text, mimetype="text/json")
 

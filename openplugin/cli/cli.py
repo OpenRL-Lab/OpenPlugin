@@ -98,7 +98,19 @@ def uninstall(plugin_name):
 
 @cli.command()
 @click.argument('plugin_name')
-def run(plugin_name):
+@click.option(
+    "--host",
+    type=str,
+    default="0.0.0.0",
+    help="Host to run the plugin.",
+)
+@click.option(
+    "-p","--port",
+    type=int,
+    default=5003,
+    help="Port to run the plugin.",
+)
+def run(plugin_name,host,port):
     from openplugin.run import run_plugin
-    run_plugin(plugin_name)
+    run_plugin(plugin_name,host=host,port=port)
 

@@ -35,6 +35,7 @@ def get_install_requires() -> list:
         "tqdm",
         "quart",
         "quart-cors",
+        "ifaddr",
     ]
 
 
