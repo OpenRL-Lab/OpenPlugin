@@ -62,7 +62,7 @@ def get_version() -> str:
 
 
 setup(
-    name="openplugin",
+    name="openplugin-py",
     version=get_version(),
     description="Toolkit and Collection for Plugins of Large Language Models",
     long_description=open("README.md", encoding="utf8").read(),
