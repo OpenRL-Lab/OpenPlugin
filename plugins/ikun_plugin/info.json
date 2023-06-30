@@ -1,4 +1,5 @@
 {
-  "plugin_name": "todo_plugin",
-  "description": "Your TODO Manager!"
+  "plugin_name": "ikun_plugin",
+  "version": "0.0.1",
+  "description": "I Love Kun!"
 }

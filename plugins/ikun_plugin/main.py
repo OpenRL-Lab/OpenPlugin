@@ -20,7 +20,7 @@ async def plugin_logo():
     filename = 'ikun.png'
     return await quart.send_file(filename, mimetype='image/png')
 
-@app.get("/.well-known/ai-plugin.json")
+@app.get("/ai-plugin.json")
 async def plugin_manifest():
     host = request.headers['Host']
     with open("./.well-known/ai-plugin.json") as f:
@@ -32,6 +32,11 @@ async def openapi_spec():
     host = request.headers['Host']
     with open("openapi.yaml") as f:
         text = f.read()
+        ROOT_URL = request.url_root
+        if ROOT_URL.endswith('/'):
+            ROOT_URL = ROOT_URL[:-1]
+        text = text.replace("{% ROOT_URL %}", ROOT_URL)
+        print(request.url_root)
         return quart.Response(text, mimetype="text/yaml")
 
 def main():

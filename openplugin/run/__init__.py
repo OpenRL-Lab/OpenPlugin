@@ -17,13 +17,18 @@
 """"""
 import os
 import sys
+
+from pathlib import Path
 from openplugin.utils.app_util import import_app
 def run_plugin(plugin_name):
-    os.chdir(f"./plugins/{plugin_name}")
+    plugin_path = f"{str(Path.home())}/.openplugin/plugins/{plugin_name}"
+    os.chdir(plugin_path )
     sys.path.append('./')
     try:
+        print("Loading plugin from {}".format(plugin_path))
         app = import_app("main:app")
     except:
         raise ValueError("plugin {} not found".format(plugin_name))
-    print("running plugin: {}...".format(plugin_name))
+
+    print("Running plugin: {}...".format(plugin_name))
     app.run(debug=True, host="0.0.0.0", port=5003)

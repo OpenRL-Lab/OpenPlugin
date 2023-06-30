@@ -85,13 +85,16 @@ def cli(ctx):
 @cli.command()
 @click.argument('plugin_name')
 def install(plugin_name):
-    click.echo(f'Installing {plugin_name}')
+    from openplugin.install import install_plugin
+    install_plugin(plugin_name)
+
 
 
 @cli.command()
 @click.argument('plugin_name')
 def uninstall(plugin_name):
-    click.echo(f'Uninstalling {plugin_name}')
+    from openplugin.install import uninstall_plugin
+    uninstall_plugin(plugin_name)
 
 @cli.command()
 @click.argument('plugin_name')
