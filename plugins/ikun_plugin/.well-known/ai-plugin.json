@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "爱坤照片",
+    "name_for_model": "ikun image",
+    "description_for_human": "这个插件可以为你生成一张我们坤坤的靓照",
+    "description_for_model": "这个插件可以为用户随机生成一张坤坤照片",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "paint-plugin-openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "http://imageOcrSummary.4pd.io/logo.png",
+    "contact_email": "support@4paradigm.com",
+    "legal_info_url": "http://imageOcrSummary.4pd.io/legal"
+}

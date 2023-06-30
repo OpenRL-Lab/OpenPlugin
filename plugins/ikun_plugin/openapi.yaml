@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: iKun API
+  description: 这是一个用于获取坤坤图片的API。
+  version: 1.0.0
+
+servers:
+  - url: http://172.27.128.24:5003
+
+paths:
+  /ikun_image:
+    get:
+      summary: 获取随机坤坤图片
+      operationId: getiKunImage
+      parameters:
+        - name: breed
+          in: query
+          description: 狗狗品种
+          schema:
+            type: string
+          example: boxer
+      responses:
+        '200':
+          description: 成功的响应
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: 坤坤图片URL
+                  status:
+                    type: string
+                    description: 响应状态
