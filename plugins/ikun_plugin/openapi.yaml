@@ -15,7 +15,7 @@ paths:
       parameters:
         - name: breed
           in: query
-          description: 狗狗品种
+          description: I Love Kun
           schema:
             type: string
           example: boxer
