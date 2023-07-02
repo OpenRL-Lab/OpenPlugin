@@ -88,6 +88,7 @@ def run_plugin(plugin_name, host: str, port: int):
     outip = getIp()
     if outip is not None:
         ips.add(outip)
+    ips.add("0.0.0.0")
     adapters = ifaddr.get_adapters()
 
     for adapter in adapters:
