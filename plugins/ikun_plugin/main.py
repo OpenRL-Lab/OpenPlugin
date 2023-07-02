@@ -16,8 +16,13 @@ async def get_ikun_image():
     return quart.Response(response=json.dumps({"message":ikun_image_url,"status":"success"}), status=200)
 
 @app.get("/ikun.png")
-async def plugin_logo():
+async def ikun_image():
     filename = 'ikun.png'
+    return await quart.send_file(filename, mimetype='image/png')
+
+@app.get("/logo.png")
+async def plugin_logo():
+    filename = 'logo.png'
     return await quart.send_file(filename, mimetype='image/png')
 
 @app.get("/ai-plugin.json")
@@ -30,6 +35,13 @@ async def plugin_manifest():
 async def openapi_spec():
     text = yaml_template.render(request)
     return quart.Response(text, mimetype="text/yaml")
+
+@app.get("/")
+@app.get("/info.json")
+async def show_info():
+    with open("info.json", "r") as f:
+        text = f.read()
+    return quart.Response(text, mimetype="text/json")
 
 def main():
     app.run(debug=True, host="0.0.0.0", port=5003)

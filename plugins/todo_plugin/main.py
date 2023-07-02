@@ -50,6 +50,13 @@ async def openapi_spec():
     text = yaml_template.render(request)
     return quart.Response(text, mimetype="text/yaml")
 
+@app.get("/")
+@app.get("/info.json")
+async def show_info():
+    with open("info.json", "r") as f:
+        text = f.read()
+    return quart.Response(text, mimetype="text/json")
+
 def main():
     app.run(debug=True, host="0.0.0.0", port=5003)
 

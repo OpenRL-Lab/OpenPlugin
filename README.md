@@ -16,8 +16,9 @@ Toolkit for managing plugins of Large Language Model (LLM). You can install, uni
 - Check system information: `op --system_info`
 - Install a plugin: `op install <plugin_name>`
 - Uninstall a plugin: `op install <plugin_name>`
-- Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin.
+- Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin. By default, the port is 5003.
 - List installed plugins: `op list`
+- Reinstall plugin: `op reinstall <plugin_name>`
 
 ## An example for using ikun_plugin
 
@@ -25,6 +26,13 @@ Toolkit for managing plugins of Large Language Model (LLM). You can install, uni
 - Start ikun_plugin: `op run ikun_plugin -p server_port`
 - Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
 - You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
+- 
+## Plugins
+
+We provide some source codes of plugins. You can find them in [plugins](./plugins). 
+We call for contributions of plugins. 
+You can fork our repo, add your plugin into [plugins](./plugins) and submit a Pull Request.
+
 
 ## Citing OpenPlugin
 
