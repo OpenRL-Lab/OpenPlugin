@@ -98,6 +98,12 @@ def uninstall(plugin_name):
 
     uninstall_plugin(plugin_name)
 
+@cli.command()
+def list():
+    from openplugin.install import list_plugins
+
+    list_plugins()
+
 
 @cli.command()
 @click.argument("plugin_name")
