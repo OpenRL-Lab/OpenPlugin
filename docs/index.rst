@@ -9,7 +9,7 @@ You can install, uninstall, run and list plugins with `op` .
 Installation
 -------
 
-```bash
+.. code-block:: bash
 
     pip install openplugin-py
 
@@ -48,7 +48,7 @@ Citing OpenPlugin
 
 If our work has been helpful to you, please feel free to cite us:
 
-```bibtex
+.. code-block:: bibtex
 
     @misc{openplugin2023,
         title={OpenPlugin},
