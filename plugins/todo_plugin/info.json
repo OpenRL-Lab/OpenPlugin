@@ -1,4 +1,5 @@
 {
   "plugin_name": "todo_plugin",
-  "description": "Your TODO Manager!"
+  "version": "0.0.1",
+  "description": "make todo list",
 }

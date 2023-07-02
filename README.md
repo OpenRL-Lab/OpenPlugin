@@ -4,7 +4,7 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/openplugin-py)
 [![Hits-of-Code](https://hitsofcode.com/github/OpenRL-Lab/OpenPlugin?branch=main)](https://hitsofcode.com/github/OpenRL-Lab/OpenPlugin/view?branch=main)
 
-Plugins for Large Language Model (LLM).
+Toolkit for managing plugins of Large Language Model (LLM). You can install, uninstall, run and list plugins with `op`.
 
 ## Installation
 
