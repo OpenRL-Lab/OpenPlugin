@@ -69,6 +69,7 @@ def reinstall_plugin(plugin_name: str) -> bool:
     uninstall_plugin(plugin_name)
     return install_plugin(plugin_name)
 
+
 def list_plugins() -> bool:
     plugin_list = get_plugin_list()
     print("Installed plugins:")

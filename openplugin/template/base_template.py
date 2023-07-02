@@ -15,19 +15,15 @@
 # limitations under the License.
 
 """"""
-from typing import Any, Dict, List, Optional, Tuple, Union
-
-from pathlib import Path
-
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from openplugin.template.utils import render_ROOT_URL
 
+
 class BaseTemplate(ABC):
-    def __init__(self,template_file:Union[str,Path]):
+    def __init__(self, template_file: Union[str, Path]):
         self.template_file = template_file
         self._load_text()
 
@@ -37,5 +33,5 @@ class BaseTemplate(ABC):
             self.text = text
 
     @abstractmethod
-    def render(self,request=None) -> str:
+    def render(self, request=None) -> str:
         raise NotImplementedError
