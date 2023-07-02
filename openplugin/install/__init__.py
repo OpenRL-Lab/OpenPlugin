@@ -63,3 +63,10 @@ def uninstall_plugin(plugin_name: str) -> bool:
     if plugin_path.exists() and plugin_path.is_dir():
         shutil.rmtree(plugin_path)
     print("Uninstalled plugin: {}!".format(plugin_name))
+
+
+def list_plugins() -> bool:
+    plugin_list = get_plugin_list()
+    print("Installed plugins:")
+    for plugin in plugin_list:
+        print(plugin)

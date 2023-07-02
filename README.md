@@ -1,5 +1,9 @@
 # OpenPlugin
 
+[![PyPI](https://img.shields.io/pypi/v/openplugin-py)](https://pypi.org/project/openplugin-py/)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/openplugin-py)
+[![Hits-of-Code](https://hitsofcode.com/github/OpenRL-Lab/OpenPlugin?branch=main)](https://hitsofcode.com/github/OpenRL-Lab/OpenPlugin/view?branch=main)
+
 Plugins for Large Language Model (LLM).
 
 ## Installation
@@ -12,8 +16,15 @@ Plugins for Large Language Model (LLM).
 - Check system information: `op --system_info`
 - Install a plugin: `op install <plugin_name>`
 - Uninstall a plugin: `op install <plugin_name>`
-- Start a plugin: `op run <plugin_name>`
+- Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin.
+- List installed plugins: `op list`
 
+## An example for using ikun_plugin
+
+- Install ikun_plugin: `op install ikun_plugin`
+- Start ikun_plugin: `op run ikun_plugin -p server_port`
+- Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
+- You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
 
 ## Citing OpenPlugin
 
