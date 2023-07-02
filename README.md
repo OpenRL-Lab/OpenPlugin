@@ -26,7 +26,7 @@ Toolkit for managing plugins of Large Language Model (LLM). You can install, uni
 - Start ikun_plugin: `op run ikun_plugin -p server_port`
 - Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
 - You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
-- 
+
 ## Plugins
 
 We provide some source codes of plugins. You can find them in [plugins](./plugins). 
@@ -42,7 +42,7 @@ If our work has been helpful to you, please feel free to cite us:
     title={OpenPlugin},
     author={OpenRL Contributors},
     publisher = {GitHub},
-    howpublished = {\url{https://github.com/OpenRL-Lab/openplugin}},
+    howpublished = {\url{https://github.com/OpenRL-Lab/OpenPlugin}},
     year={2023},
 }
 ```
