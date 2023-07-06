@@ -32,13 +32,13 @@ Usage
 An example for using QRcode_plugin
 -------
 
-- Install QRcode_plugin: ``op install QRcode_plugin``
-- Or You can install QRcode_plugin from local:
-  - Go to the directory of QRcode_plugin: ``cd plugins/QRcode_plugin``
-  - Install QRcode_plugin: ``op install ./``
-- Start QRcode_plugin: ``op run QRcode_plugin -p server_port``
-- Then you can get the `ai-plugin.json`` file via visiting ``http://<server_ip>:server_port/ai-plugin.json``
-- You can get the ``openaip.yaml`` file via visiting ``http://<server_ip>:server_port/openaip.yaml``
+* Install QRcode_plugin: ``op install QRcode_plugin``
+* Or You can install QRcode_plugin from local:
+  * Go to the directory of QRcode_plugin: ``cd plugins/QRcode_plugin``
+  * Install QRcode_plugin: ``op install ./``
+* Start QRcode_plugin: ``op run QRcode_plugin -p server_port``
+* Then you can get the `ai-plugin.json`` file via visiting ``http://<server_ip>:server_port/ai-plugin.json``
+* You can get the ``openaip.yaml`` file via visiting ``http://<server_ip>:server_port/openaip.yaml``
 
 
 
