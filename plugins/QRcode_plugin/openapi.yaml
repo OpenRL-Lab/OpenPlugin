@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: QR code API
+  description: 这是一个用于获取二维码图片的API。
+  version: 1.0.0
+
+servers:
+  - url: {% ROOT_URL %}
+
+paths:
+  /qrcode_image:
+    get:
+      summary: 获取二维码图片
+      operationId: getQRcode
+      parameters:
+        - name: breed
+          in: query
+          description: get QR code
+          schema:
+            type: string
+          example: boxer
+      responses:
+        '200':
+          description: 成功的响应
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: QR图片的url
+                  status:
+                    type: string
+                    description: 响应状态

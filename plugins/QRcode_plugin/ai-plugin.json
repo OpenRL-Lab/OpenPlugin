@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "二维码生成",
+    "name_for_model": "QR code",
+    "description_for_human": "这个插件可以为你生成一张二维码图片",
+    "description_for_model": "这个插件可以为用户生成一张二维码图片",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "paint-plugin-openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "http://imageOcrSummary.4pd.io/logo.png",
+    "contact_email": "huangsy1314@163.com",
+    "legal_info_url": "http://imageOcrSummary.4pd.io/legal"
+}

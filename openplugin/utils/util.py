@@ -15,7 +15,8 @@
 # limitations under the License.
 
 """"""
-
+import os
+import shutil
 import platform
 import re
 from pathlib import Path
@@ -25,9 +26,9 @@ import numpy as np
 
 import openplugin
 
-
+REMOTE_URL = "https://openrl.net/plugin-store/download"
 def get_zip_file_url(plugin_name: str) -> str:
-    return "https://openrl.net/openplugin/download/{}".format(plugin_name)
+    return "{}/{}".format(REMOTE_URL, plugin_name)
 
 
 def get_plugin_directory() -> Path:
@@ -43,6 +44,13 @@ def get_plugin_list():
                 plugin_list.append(plugin.name)
     return plugin_list
 
+def make_zip_file(dir_to_put_file_in,plugin_directory,plugin_name):
+    # create a zip file
+    zip_file_name = plugin_name
+    zip_file_parent = Path(plugin_directory).parent
+    zip_file_path = os.path.join(dir_to_put_file_in, zip_file_name)
+    shutil.make_archive(zip_file_path, 'zip', zip_file_parent,plugin_directory)
+    return os.path.join(dir_to_put_file_in, zip_file_name + '.zip')
 
 def get_system_info() -> Dict[str, str]:
     """

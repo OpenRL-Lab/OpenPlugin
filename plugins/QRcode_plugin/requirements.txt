@@ -1,0 +1,4 @@
+quart
+quart-cors
+openplugin-py
+segno
