@@ -4,7 +4,7 @@ Welcome to OpenPlugin!
 [`Github <https://github.com/OpenRL-Lab/OpenPlugin>`_]
 
 OpenPlugin is a toolkit for managing plugins of Large Language Model (LLM).
-You can install, uninstall, run and list plugins with `op` .
+You can install, uninstall, run and list plugins with ``op`` .
 
 Installation
 -------
@@ -17,21 +17,21 @@ Installation
 Usage
 -------
 
-- Check OpenPlugin's version with: `op --version`
-- Check system information: `op --system_info`
-- Install a plugin: `op install <plugin_name>`
-- Uninstall a plugin: `op install <plugin_name>`
-- Start a plugin: `op run <plugin_name>` . You can use `-p` to specify the port of the plugin. By default, the port is 5003.
-- List installed plugins: `op list`
-- Reinstall plugin: `op reinstall <plugin_name>`
+- Check OpenPlugin's version with: ``op --version``
+- Check system information: ``op --system_info``
+- Install a plugin: ``op install <plugin_name>``
+- Uninstall a plugin: ``op install <plugin_name>``
+- Start a plugin: ``op run <plugin_name>`` . You can use ``-p`` to specify the port of the plugin. By default, the port is 5003.
+- List installed plugins: ``op list``
+- Reinstall plugin: ``op reinstall <plugin_name>``
 
 An example for using ikun_plugin
 -------
 
-- Install ikun_plugin: `op install ikun_plugin`
-- Start ikun_plugin: `op run ikun_plugin -p server_port`
-- Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
-- You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
+- Install ikun_plugin: ``op install ikun_plugin``
+- Start ikun_plugin: ``op run ikun_plugin -p server_port``
+- Then you can get the `ai-plugin.json`` file via visiting ``http://<server_ip>:server_port/ai-plugin.json``
+- You can get the ``openaip.yaml`` file via visiting ``http://<server_ip>:server_port/openaip.yaml``
 
 
 
