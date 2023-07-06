@@ -1,6 +1,6 @@
-# ikun plugin
+# QRcode plugin
 
-Get kunkun's image.
+Get QR code.
 
 ## Setup locally
 
