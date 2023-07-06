@@ -95,13 +95,17 @@ def install(plugin_name):
 @click.argument("plugin_name")
 def uninstall(plugin_name):
     from openplugin.install import uninstall_plugin
+
     uninstall_plugin(plugin_name)
+
 
 @cli.command()
 @click.argument("plugin_name")
 def reinstall(plugin_name):
     from openplugin.install import reinstall_plugin
+
     reinstall_plugin(plugin_name)
+
 
 @cli.command()
 def list():

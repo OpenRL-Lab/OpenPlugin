@@ -21,6 +21,12 @@ format:
 	isort ${PYTHON_FILES}
 	# Reformat using black
 	black ${PYTHON_FILES} --preview
-    # do format agent
+	# do format agent
 	isort ${PYTHON_FILES}
 	black ${PYTHON_FILES} --preview
+
+pypi-test-upload:
+	twine upload dist/* -r testpypi
+
+pypi-upload:
+	twine upload dist/*

@@ -18,7 +18,8 @@
 from openplugin.template.base_template import BaseTemplate
 from openplugin.template.utils import render_ROOT_URL
 
+
 class JSONTemplate(BaseTemplate):
-    def render(self,request=None ) -> str:
+    def render(self, request=None) -> str:
         text = render_ROOT_URL(self.text, request)
         return text
