@@ -13,20 +13,28 @@ Toolkit for managing plugins of Large Language Model (LLM). You can install, uni
 
 - `pip install openplugin-py` (or clone this repo and `pip install -e .`).
 
+
+## Plugin Store
+
+We provide plugins in [Plugin Store](https://openrl.net/plugin-store/). Users can download these plugins and use them with `op`.
+
 ## Usage
 
 - Check OpenPlugin's version with: `op --version`
 - Check system information: `op --system_info`
-- Install a plugin: `op install <plugin_name>`
-- Uninstall a plugin: `op install <plugin_name>`
+- Install a plugin: `op install <plugin_name>`. You can also install local plugins with `op install ./`.
+- Uninstall a plugin: `op uninstall <plugin_name>`
 - Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin. By default, the port is 5003.
 - List installed plugins: `op list`
 - Reinstall plugin: `op reinstall <plugin_name>`
 
-## An example for using ikun_plugin
+## An example for using QRcode_plugin
 
-- Install ikun_plugin: `op install ikun_plugin`
-- Start ikun_plugin: `op run ikun_plugin -p server_port`
+- Install QRcode_plugin: `op install QRcode_plugin`
+- Or You can install QRcode_plugin from local:
+  - Go to the directory of QRcode_plugin: `cd plugins/QRcode_plugin`
+  - Install QRcode_plugin: `op install ./`
+- Start QRcode_plugin: `op run QRcode_plugin -p server_port`
 - Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
 - You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
 
