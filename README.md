@@ -24,7 +24,7 @@ We provide plugins in [Plugin Store](https://openrl.net/plugin-store/). Users ca
 - Check system information: `op --system_info`
 - Install a plugin: `op install <plugin_name>`. You can also install local plugins with `op install ./`.
 - Uninstall a plugin: `op uninstall <plugin_name>`
-- Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin. By default, the port is 5003.
+- Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin. By default, the port is 5003.  You can also run a local plugin with `op run ./`.
 - List installed plugins: `op list`
 - Reinstall plugin: `op reinstall <plugin_name>`
 
@@ -35,6 +35,9 @@ We provide plugins in [Plugin Store](https://openrl.net/plugin-store/). Users ca
   - Go to the directory of QRcode_plugin: `cd plugins/QRcode_plugin`
   - Install QRcode_plugin: `op install ./`
 - Start QRcode_plugin: `op run QRcode_plugin -p server_port`
+- Or you can start QRcode_plugin from local:
+  - Go to the directory of QRcode_plugin: `cd plugins/QRcode_plugin`
+  - Start QRcode_plugin: `op run ./ -p server_port`
 - Then you can get the `ai-plugin.json` file via visiting `http://<server_ip>:server_port/ai-plugin.json`
 - You can get the `openaip.yaml` file via visiting `http://<server_ip>:server_port/openaip.yaml`
 
