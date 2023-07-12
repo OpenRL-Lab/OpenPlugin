@@ -16,21 +16,19 @@
 
 """"""
 import io
-import os
 import shutil
 import zipfile
-import tempfile
 
-from pathlib import Path
 import requests
-import json
 
+from openplugin.install.local_install import install_local_plugin
 from openplugin.utils.util import (
     get_plugin_directory,
     get_plugin_list,
     get_zip_file_url,
-    make_zip_file,
 )
+
+
 # import urllib
 def install_plugin(plugin_name: str) -> bool:
     if plugin_name == "./":
@@ -59,26 +57,7 @@ def install_plugin(plugin_name: str) -> bool:
     return True
     # urllib.request.urlretrieve(zip_file_url, f'{plugin_name}.zip')
 
-def install_local_plugin() -> bool:
-    info_file = Path("info.json")
-    assert info_file.exists(), "info.json not found"
-    info_dict = json.load(open("info.json", "r"))
-    assert "plugin_name" in info_dict, "plugin_name not found in info.json"
-    plugin_name = info_dict["plugin_name"]
-    print("Installing plugin: {}...".format(plugin_name))
 
-    tempdir = tempfile.mkdtemp()
-    filepath = make_zip_file(dir_to_put_file_in=tempdir,
-                             plugin_directory="./", plugin_name = plugin_name)
-
-    z = zipfile.ZipFile(filepath)
-    plugin_directory = get_plugin_directory()
-    if not plugin_directory.exists():
-        plugin_directory.mkdir(parents=True)
-    print("Extracting plugin to {}".format(plugin_directory / plugin_name))
-    z.extractall(os.path.join(get_plugin_directory(),plugin_name))
-    shutil.rmtree(tempdir, ignore_errors=True)
-    return True
 def uninstall_plugin(plugin_name: str) -> bool:
     plugin_list = get_plugin_list()
     if plugin_name not in plugin_list:
