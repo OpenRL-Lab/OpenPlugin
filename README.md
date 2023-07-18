@@ -6,6 +6,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/openplugin/badge/?version=latest)](https://openplugin.readthedocs.io/en/latest/?badge=latest)
 
+[[demo video](https://youtu.be/QByu8i9zO04)]
 
 Toolkit for managing plugins of Large Language Model (LLM). You can install, uninstall, run and list plugins with `op`.
 
