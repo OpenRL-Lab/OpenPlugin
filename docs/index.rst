@@ -1,7 +1,7 @@
 Welcome to OpenPlugin!
 ====================
 
-[`Github <https://github.com/OpenRL-Lab/OpenPlugin>`_] | [[`demo video <https://youtu.be/QByu8i9zO04>`_]
+[`Github <https://github.com/OpenRL-Lab/OpenPlugin>`_] | [`demo video <https://youtu.be/QByu8i9zO04>`_] | [`bilibili video <https://www.bilibili.com/video/BV1AM4y1s7Qu>`_]
 
 OpenPlugin is a toolkit for managing plugins of Large Language Model (LLM).
 You can install, uninstall, run and list plugins with ``op`` .
