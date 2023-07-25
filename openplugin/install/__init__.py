@@ -22,6 +22,7 @@ import zipfile
 import requests
 
 from openplugin.install.local_install import install_local_plugin
+from openplugin.install.zip_install import install_zip_plugin
 from openplugin.utils.util import (
     get_plugin_directory,
     get_plugin_list,
@@ -34,6 +35,10 @@ def install_plugin(plugin_name: str) -> bool:
     if plugin_name == "./":
         print("Installing current directory as plugin...")
         return install_local_plugin()
+
+    if plugin_name.endswith(".zip"):
+        print("Installing plugin from zip file...")
+        return install_zip_plugin(plugin_name)
 
     plugin_list = get_plugin_list()
     if plugin_name in plugin_list:
