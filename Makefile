@@ -30,3 +30,8 @@ pypi-test-upload:
 
 pypi-upload:
 	twine upload dist/*
+
+doc:
+	$(call check_install, sphinx)
+	$(call check_install, sphinx_rtd_theme)
+	cd docs && make html && cd _build/html && python3 -m http.server
