@@ -94,7 +94,7 @@ def install(plugin_name):
 @cli.command()
 @click.argument("plugin_name")
 def uninstall(plugin_name):
-    from openplugin.install import uninstall_plugin
+    from openplugin.install.uninstall import uninstall_plugin
 
     uninstall_plugin(plugin_name)
 
@@ -109,7 +109,7 @@ def reinstall(plugin_name):
 
 @cli.command()
 def list():
-    from openplugin.install import list_plugins
+    from openplugin.install.list_plugins import list_plugins
 
     list_plugins()
 

@@ -16,15 +16,14 @@
 
 """"""
 
-import json
 import os
 import shutil
 import tempfile
 import zipfile
-from pathlib import Path
+
 
 from openplugin.utils.local_plugin_utils import check_local_plugin
-from openplugin.utils.util import get_plugin_directory, make_zip_file
+from openplugin.utils.util import get_plugin_directory, make_zip_file,get_plugin_version
 
 
 def install_local_plugin() -> bool:
@@ -43,4 +42,6 @@ def install_local_plugin() -> bool:
     print("Extracting plugin to {}".format(plugin_directory / plugin_name))
     z.extractall(os.path.join(get_plugin_directory(), plugin_name))
     shutil.rmtree(tempdir, ignore_errors=True)
+    plugin_version = get_plugin_version(plugin_directory / plugin_name)
+    print("Installed plugin: {}:{}!".format(plugin_name, plugin_version))
     return True

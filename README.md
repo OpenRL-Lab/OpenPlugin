@@ -23,7 +23,7 @@ We provide plugins in [Plugin Store](https://openrl.net/plugin-store/). Users ca
 
 - Check OpenPlugin's version with: `op --version`
 - Check system information: `op --system_info`
-- Install a plugin: `op install <plugin_name>`. You can also install local plugins with `op install ./`.
+- Install a plugin: `op install <plugin_name>`. You can also install local plugins with `op install .`.
   - You can also install a plugin from a zip file: `op install <zip_file_path>`.
 - Uninstall a plugin: `op uninstall <plugin_name>`
 - Start a plugin: `op run <plugin_name>`. You can use `-p` to specify the port of the plugin. By default, the port is 5003.  You can also run a local plugin with `op run ./`.
@@ -35,7 +35,7 @@ We provide plugins in [Plugin Store](https://openrl.net/plugin-store/). Users ca
 - Install QRcode_plugin: `op install QRcode_plugin`
 - Or You can install QRcode_plugin from local:
   - Go to the directory of QRcode_plugin: `cd plugins/QRcode_plugin`
-  - Install QRcode_plugin: `op install ./`
+  - Install QRcode_plugin: `op install .`
 - Or you can install QRcode_plugin from a zip file: `op install QRcode_plugin.zip`
 - Start QRcode_plugin: `op run QRcode_plugin -p server_port`
 - Or you can start QRcode_plugin from local:

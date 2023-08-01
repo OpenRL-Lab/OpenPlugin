@@ -15,38 +15,30 @@
 # limitations under the License.
 
 """"""
+import io
 
-import shutil
-import tempfile
 import zipfile
-
-from pathlib import Path
-
-from openplugin.utils.local_plugin_utils import check_local_plugin
+import requests
 
 from openplugin.utils.util import (
-    get_plugin_list,
     get_plugin_directory,
-get_plugin_version,
-
+    get_plugin_list,
+    get_zip_file_url,
+    get_plugin_version,
 )
 
-def install_zip_plugin(plugin_zip_file_path: str) -> bool:
-    assert plugin_zip_file_path.endswith(".zip")
-
-    tempdir = tempfile.mkdtemp()
-    z = zipfile.ZipFile(plugin_zip_file_path)
-    z.extractall(tempdir)
-
-
-    plugin_name = check_local_plugin(Path(tempdir).iterdir().__next__())
-    shutil.rmtree(tempdir, ignore_errors=True)
+def remote_install(plugin_name: str)-> bool:
     plugin_list = get_plugin_list()
     if plugin_name in plugin_list:
         print("Plugin {} already installed!".format(plugin_name))
         return True
 
+    print("Installing plugin: {}...".format(plugin_name))
+    zip_file_url = get_zip_file_url(plugin_name)
     try:
+        print("Downloading plugin from {}".format(zip_file_url))
+        r = requests.get(zip_file_url)
+        z = zipfile.ZipFile(io.BytesIO(r.content))
         plugin_directory = get_plugin_directory()
         if not plugin_directory.exists():
             plugin_directory.mkdir(parents=True)
@@ -54,8 +46,6 @@ def install_zip_plugin(plugin_zip_file_path: str) -> bool:
         z.extractall(get_plugin_directory())
         plugin_version = get_plugin_version(plugin_directory / plugin_name)
     except:
-        raise ValueError("Install {} failed".format(plugin_name))
-
-
+        raise ValueError("plugin {} not found".format(plugin_name))
     print("Installed plugin: {}:{}!".format(plugin_name,plugin_version))
     return True

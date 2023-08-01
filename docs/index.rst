@@ -23,7 +23,7 @@ Usage
 
 * Check OpenPlugin's version with: ``op --version``
 * Check system information: ``op --system_info``
-* Install a plugin: ``op install <plugin_name>`` . You can also install local plugins with ``op install ./`` .
+* Install a plugin: ``op install <plugin_name>`` . You can also install local plugins with ``op install .`` .
 
     * You can also install a plugin from a zip file: ``op install <zip_file_path>`` .
 
@@ -39,7 +39,7 @@ An example for using QRcode_plugin
 * Or You can install QRcode_plugin from local:
 
   * Go to the directory of QRcode_plugin: ``cd plugins/QRcode_plugin``
-  * Install QRcode_plugin: ``op install ./``
+  * Install QRcode_plugin: ``op install .``
 
 * Or you can install QRcode_plugin from a zip file: ``op install QRcode_plugin.zip``
 * Start QRcode_plugin: ``op run QRcode_plugin -p server_port``
