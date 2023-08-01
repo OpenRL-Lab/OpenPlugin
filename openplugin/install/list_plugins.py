@@ -16,9 +16,9 @@
 
 """"""
 from openplugin.utils.util import (
+    get_plugin_directory,
     get_plugin_list,
     get_plugin_version,
-get_plugin_directory,
 )
 
 
@@ -27,5 +27,5 @@ def list_plugins() -> bool:
     plugin_directory = get_plugin_directory()
     print("Installed plugins:")
     for plugin in plugin_list:
-        plugin_version = get_plugin_version(plugin_directory/plugin)
+        plugin_version = get_plugin_version(plugin_directory / plugin)
         print(f"{plugin}:{plugin_version}")

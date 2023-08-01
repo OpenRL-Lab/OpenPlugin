@@ -24,6 +24,7 @@ from openplugin.utils.util import (
     get_plugin_version,
 )
 
+
 def uninstall_plugin(plugin_name: str) -> bool:
     plugin_list = get_plugin_list()
     if plugin_name not in plugin_list:
@@ -34,4 +35,4 @@ def uninstall_plugin(plugin_name: str) -> bool:
     plugin_version = get_plugin_version(plugin_path)
     if plugin_path.exists() and plugin_path.is_dir():
         shutil.rmtree(plugin_path)
-    print("Uninstalled plugin: {}:{}!".format(plugin_name,plugin_version))
+    print("Uninstalled plugin: {}:{}!".format(plugin_name, plugin_version))
