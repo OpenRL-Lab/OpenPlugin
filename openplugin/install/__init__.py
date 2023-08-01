@@ -17,9 +17,11 @@
 """"""
 
 from openplugin.install.local_install import install_local_plugin
-from openplugin.install.zip_install import install_zip_plugin
 from openplugin.install.remote_install import remote_install
 from openplugin.install.uninstall import uninstall_plugin
+from openplugin.install.zip_install import install_zip_plugin
+
+
 def install_plugin(plugin_name: str) -> bool:
     if plugin_name == "./" or plugin_name == ".":
         print("Installing current directory as plugin...")
@@ -31,8 +33,7 @@ def install_plugin(plugin_name: str) -> bool:
 
     return remote_install(plugin_name)
 
+
 def reinstall_plugin(plugin_name: str) -> bool:
     uninstall_plugin(plugin_name)
     return install_plugin(plugin_name)
-
-

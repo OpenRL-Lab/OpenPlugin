@@ -16,18 +16,19 @@
 
 """"""
 import io
-
 import zipfile
+
 import requests
 
 from openplugin.utils.util import (
     get_plugin_directory,
     get_plugin_list,
-    get_zip_file_url,
     get_plugin_version,
+    get_zip_file_url,
 )
 
-def remote_install(plugin_name: str)-> bool:
+
+def remote_install(plugin_name: str) -> bool:
     plugin_list = get_plugin_list()
     if plugin_name in plugin_list:
         print("Plugin {} already installed!".format(plugin_name))
@@ -47,5 +48,5 @@ def remote_install(plugin_name: str)-> bool:
         plugin_version = get_plugin_version(plugin_directory / plugin_name)
     except:
         raise ValueError("plugin {} not found".format(plugin_name))
-    print("Installed plugin: {}:{}!".format(plugin_name,plugin_version))
+    print("Installed plugin: {}:{}!".format(plugin_name, plugin_version))
     return True

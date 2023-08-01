@@ -21,9 +21,12 @@ import shutil
 import tempfile
 import zipfile
 
-
 from openplugin.utils.local_plugin_utils import check_local_plugin
-from openplugin.utils.util import get_plugin_directory, make_zip_file,get_plugin_version
+from openplugin.utils.util import (
+    get_plugin_directory,
+    get_plugin_version,
+    make_zip_file,
+)
 
 
 def install_local_plugin() -> bool:

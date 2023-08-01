@@ -19,8 +19,8 @@ import json
 from pathlib import Path
 
 
-def check_local_plugin(plugin_path:str = "./") -> str:
-    info_file = Path(plugin_path)/"info.json"
+def check_local_plugin(plugin_path: str = "./") -> str:
+    info_file = Path(plugin_path) / "info.json"
 
     assert info_file.exists(), "info.json not found"
     info_dict = json.load(open(info_file, "r"))

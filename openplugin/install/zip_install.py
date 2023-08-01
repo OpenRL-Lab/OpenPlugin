@@ -19,17 +19,15 @@
 import shutil
 import tempfile
 import zipfile
-
 from pathlib import Path
 
 from openplugin.utils.local_plugin_utils import check_local_plugin
-
 from openplugin.utils.util import (
-    get_plugin_list,
     get_plugin_directory,
-get_plugin_version,
-
+    get_plugin_list,
+    get_plugin_version,
 )
+
 
 def install_zip_plugin(plugin_zip_file_path: str) -> bool:
     assert plugin_zip_file_path.endswith(".zip")
@@ -37,7 +35,6 @@ def install_zip_plugin(plugin_zip_file_path: str) -> bool:
     tempdir = tempfile.mkdtemp()
     z = zipfile.ZipFile(plugin_zip_file_path)
     z.extractall(tempdir)
-
 
     plugin_name = check_local_plugin(Path(tempdir).iterdir().__next__())
     shutil.rmtree(tempdir, ignore_errors=True)
@@ -56,6 +53,5 @@ def install_zip_plugin(plugin_zip_file_path: str) -> bool:
     except:
         raise ValueError("Install {} failed".format(plugin_name))
 
-
-    print("Installed plugin: {}:{}!".format(plugin_name,plugin_version))
+    print("Installed plugin: {}:{}!".format(plugin_name, plugin_version))
     return True

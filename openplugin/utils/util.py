@@ -15,14 +15,14 @@
 # limitations under the License.
 
 """"""
+import json
 import os
 import platform
 import re
 import shutil
 from pathlib import Path
-from typing import Dict,Union
+from typing import Dict, Union
 
-import json
 import numpy as np
 
 import openplugin
@@ -47,15 +47,18 @@ def get_plugin_list():
                 plugin_list.append(plugin.name)
     return plugin_list
 
-def get_plugin_version(plugin_path: Union[Path,str]) -> str:
+
+def get_plugin_version(plugin_path: Union[Path, str]) -> str:
     if isinstance(plugin_path, str):
         plugin_path = Path(plugin_path)
-    info_file = plugin_path/"info.json"
+    info_file = plugin_path / "info.json"
     assert info_file.exists(), "Plugin info file not found!"
 
     with open(info_file) as f:
         info = json.load(f)
     return info["version"]
+
+
 def make_zip_file(dir_to_put_file_in, plugin_directory, plugin_name):
     # create a zip file
     zip_file_name = plugin_name
