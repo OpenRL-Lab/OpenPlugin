@@ -15,12 +15,12 @@
 # limitations under the License.
 
 """"""
-from typing import Tuple, Union
 import json
-
 from pathlib import Path
+from typing import Tuple, Union
 
-def check_info_file(info_file:Union[str,Path]) -> Tuple[bool, str]:
+
+def check_info_file(info_file: Union[str, Path]) -> Tuple[bool, str]:
     """Check if the given info file is valid."""
     message = ""
     success = True
@@ -57,5 +57,5 @@ def check_local_plugin(plugin_path: Union[str, Path]) -> Tuple[bool, str]:
         success = False
         message = f"Plugin path {plugin_path} does not contain all required files."
     else:
-        success, message = check_info_file(plugin_path/"info.json")
+        success, message = check_info_file(plugin_path / "info.json")
     return success, message
