@@ -17,9 +17,7 @@
 """"""
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
-
-from openplugin.template.utils import render_ROOT_URL
+from typing import Union
 
 
 class BaseTemplate(ABC):

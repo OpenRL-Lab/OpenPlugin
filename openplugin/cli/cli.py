@@ -15,7 +15,7 @@
 # limitations under the License.
 
 """"""
-import os
+
 
 import click
 from click.core import Context, Option
