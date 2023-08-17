@@ -21,7 +21,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from openplugin.utils.local_plugin_utils import check_local_plugin
+from openplugin.utils.local_plugin_utils import get_local_plugin_name
 from openplugin.utils.util import (
     get_plugin_directory,
     get_plugin_list,
@@ -36,7 +36,7 @@ def install_zip_plugin(plugin_zip_file_path: str) -> bool:
     z = zipfile.ZipFile(plugin_zip_file_path)
     z.extractall(tempdir)
 
-    plugin_name = check_local_plugin(Path(tempdir).iterdir().__next__())
+    plugin_name = get_local_plugin_name(Path(tempdir).iterdir().__next__())
     shutil.rmtree(tempdir, ignore_errors=True)
     plugin_list = get_plugin_list()
     if plugin_name in plugin_list:

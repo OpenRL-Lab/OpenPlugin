@@ -21,21 +21,27 @@ import shutil
 import tempfile
 import zipfile
 
-from openplugin.utils.local_plugin_utils import check_local_plugin
+from openplugin.utils.local_plugin_utils import get_local_plugin_name
 from openplugin.utils.util import (
     get_plugin_directory,
     get_plugin_version,
     make_zip_file,
 )
+from openplugin.utils.check import check_local_plugin
 
 
 def install_local_plugin() -> bool:
-    plugin_name = check_local_plugin()
+    local_plugin_directory = "./"
+    plugin_name = get_local_plugin_name(local_plugin_directory)
     print("Installing plugin: {}...".format(plugin_name))
 
+    success, message = check_local_plugin(local_plugin_directory)
+    if not success:
+        print("Error: {}".format(message))
+        return False
     tempdir = tempfile.mkdtemp()
     filepath = make_zip_file(
-        dir_to_put_file_in=tempdir, plugin_directory="./", plugin_name=plugin_name
+        dir_to_put_file_in=tempdir, plugin_directory=local_plugin_directory, plugin_name=plugin_name
     )
 
     z = zipfile.ZipFile(filepath)

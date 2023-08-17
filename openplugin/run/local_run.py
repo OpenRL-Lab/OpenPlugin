@@ -17,11 +17,11 @@
 """"""
 
 from openplugin.plugin.webapp_plugin import WebAppPlugin
-from openplugin.utils.local_plugin_utils import check_local_plugin
+from openplugin.utils.local_plugin_utils import get_local_plugin_name
 
 
 def run_local_plugin(host: str, port: int) -> bool:
-    plugin_name = check_local_plugin()
+    plugin_name = get_local_plugin_name()
     print("Installing plugin: {}...".format(plugin_name))
     plugin = WebAppPlugin(plugin_name, plugin_path="./")
     plugin.run(host, port)
