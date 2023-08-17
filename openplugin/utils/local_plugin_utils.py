@@ -19,7 +19,7 @@ import json
 from pathlib import Path
 
 
-def check_local_plugin(plugin_path: str = "./") -> str:
+def get_local_plugin_name(plugin_path: str = "./") -> str:
     info_file = Path(plugin_path) / "info.json"
 
     assert info_file.exists(), "info.json not found"

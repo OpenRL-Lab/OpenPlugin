@@ -36,6 +36,8 @@ def get_install_requires() -> list:
         "quart",
         "quart-cors",
         "ifaddr",
+        "numpy",
+        "requests",
     ]
 
 
