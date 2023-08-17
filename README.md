@@ -8,6 +8,8 @@
 
 [[demo video](https://youtu.be/QByu8i9zO04)] | [[bilibili video](https://www.bilibili.com/video/BV1AM4y1s7Qu)]
 
+OpenPlugin-v0.0.8 is updated on Aug 17, 2023
+
 Toolkit for managing plugins of Large Language Model (LLM). You can install, uninstall, run and list plugins with `op`.
 
 ## Installation
