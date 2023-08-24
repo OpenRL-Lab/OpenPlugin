@@ -357,16 +357,16 @@ def write_error(sock, status_int, reason, mesg):
     html_error = (
         textwrap.dedent(
             """\
-    <html>
-      <head>
-        <title>%(reason)s</title>
-      </head>
-      <body>
-        <h1><p>%(reason)s</p></h1>
-        %(mesg)s
-      </body>
-    </html>
-    """
+        <html>
+          <head>
+            <title>%(reason)s</title>
+          </head>
+          <body>
+            <h1><p>%(reason)s</p></h1>
+            %(mesg)s
+          </body>
+        </html>
+        """
         )
         % {"reason": reason, "mesg": html.escape(mesg)}
     )
@@ -374,12 +374,12 @@ def write_error(sock, status_int, reason, mesg):
     http = (
         textwrap.dedent(
             """\
-    HTTP/1.1 %s %s\r
-    Connection: close\r
-    Content-Type: text/html\r
-    Content-Length: %d\r
-    \r
-    %s"""
+        HTTP/1.1 %s %s\r
+        Connection: close\r
+        Content-Type: text/html\r
+        Content-Length: %d\r
+        \r
+        %s"""
         )
         % (str(status_int), reason, len(html_error), html_error)
     )
