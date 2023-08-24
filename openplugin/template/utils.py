@@ -15,6 +15,7 @@
 # limitations under the License.
 
 """"""
+from jinja2 import Template
 
 
 def render_ROOT_URL(text: str, request=None) -> str:
@@ -23,5 +24,8 @@ def render_ROOT_URL(text: str, request=None) -> str:
     ROOT_URL = request.url_root
     if ROOT_URL.endswith("/"):
         ROOT_URL = ROOT_URL[:-1]
-    text = text.replace("{% ROOT_URL %}", ROOT_URL)
-    return text
+
+    template = Template(text)
+    rendered_text = template.render(ROOT_URL=ROOT_URL)
+    # text = text.replace("{{ROOT_URL}}", ROOT_URL)
+    return rendered_text

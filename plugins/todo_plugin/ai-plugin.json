@@ -9,9 +9,9 @@
     },
     "api": {
       "type": "openapi",
-      "url": "{% ROOT_URL %}/openapi.yaml"
+      "url": "{{ROOT_URL}}/openapi.yaml"
     },
-    "logo_url": "{% ROOT_URL %}/logo.png",
+    "logo_url": "{{ROOT_URL}}/logo.png",
     "contact_email": "huangsy1314@163.com",
     "legal_info_url": "http://example.com/legal"
   }
