@@ -18,7 +18,7 @@
 
 
 __TITLE__ = "openplugin"
-__VERSION__ = "v0.0.8"
+__VERSION__ = "v0.0.9"
 __DESCRIPTION__ = "Toolkit and Collection for Plugins of Large Language Models"
 __AUTHOR__ = "OpenRL Contributors"
 __EMAIL__ = "huangshiyu@4paradigm.com"
